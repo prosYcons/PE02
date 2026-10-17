@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Academic resume and portfolio of Constanza Gómez Acebo.">
+        <title>Constanza Gómez Acebo | Resume</title>
+        <!-- Changed John Doe to my own name. -->
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-inner">
+                <!-- Created a div to encapsulate the photo and put it aside my name and info. -->
+                <div class="profile-photo">
+                    <img src="images/me-photo.jpg" alt="Profile picture of Constanza Gómez Acebo"
+                        onerror="this.hidden=true; this.nextElementSibling.hidden=false;">
+                    <!-- Added a fallback in case the photo does not load. -->
+                    <div class="photo-fallback" hidden>CG</div>
+                </div>
+                <div class="header-copy">
+                    <p class="eyebrow">ACADEMIC PROFILE & PORTFOLIO</p>
+                    <h1>Constanza Gómez Acebo</h1>
+                    <p class="subtitle">Intelligent Systems Engineering Student</p>
+                    <p class="intro-line">Computing, research, and astronomy</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN: contains the main resume content, grouped into named sections. -->
+        <main>
+            <!-- About Me: dded an introduction. -->
+            <section class="panel about-section" aria-labelledby="about-heading">
+                <h2 id="about-heading">About Me</h2>
+                <p>
+                    I am an Intelligent Systems Engineering student interested in the intersection
+                    of computer science, artificial intelligence, and astronomy. Through academic
+                    projects, I have been developing my programming and data-analysis skills while
+                    exploring how machine-learning methods can support scientific research.
+                </p>
+            </section>
+
+            <!-- Experience: added my academic/research projects. -->
+            <section class="panel accordion-section" aria-labelledby="experience-heading">
+                <h2 id="experience-heading">Academic & Research Experience</h2>
+                <details class="accordion-item">
+                    <summary>Astroinformatics Research — Variable-Star Classification</summary>
+                    <div class="accordion-content">
+                        <p class="item-meta">Research project · In progress</p>
+                        <p>
+                            Working on an astroinformatics project that applies machine-learning
+                            techniques to classify variable stars using light-curve data from the
+                            DESC-ELAsTiCC2 dataset.
+                        </p>
+                        <p class="subheading">Activities and skills</p>
+                        <ul>
+                            <li>Analysing astronomical time-series and light-curve data.</li>
+                            <li>Applying Python and machine-learning methods to a scientific problem.</li>
+                            <li>Considering scalable approaches relevant to large astronomical surveys.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="accordion-item">
+                    <summary>Software Development — Academic Projects</summary>
+                    <div class="accordion-content">
+                        <p class="item-meta">University coursework and personal practice</p>
+                        <p>
+                            Building programming projects to practice software design, problem-solving,
+                            and application development.
+                        </p>
+                        <p class="subheading">Selected areas</p>
+                        <ul>
+                            <li>Developing mobile interfaces with Flutter and Dart.</li>
+                            <li>Practicing C++ programming and object-oriented concepts.</li>
+                            <li>Creating web pages with HTML and CSS and improving responsive layouts.</li>
+                        </ul>
+                    </div>
+                </details>
+            </section>
+
+            <!-- Skills: turned this section into an accordion. -->
+            <section class="panel accordion-section" id="skills" aria-labelledby="skills-heading">
+                <h2 id="skills-heading">Skills</h2>
+                <details class="accordion-item">
+                    <summary>View technical skills</summary>
+                    <div class="accordion-content table-wrap">
+                        <table class="skills-table">
+                            <caption>Technical skills developed through coursework and projects</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Skill</th>
+                                    <th scope="col">Application</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Python</td><td>Programming and data analysis</td></tr>
+                                <tr><td>Machine Learning</td><td>Classification and model experimentation</td></tr>
+                                <tr><td>C++</td><td>Programming fundamentals and graphics coursework</td></tr>
+                                <tr><td>HTML &amp; CSS</td><td>Semantic structure and page styling</td></tr>
+                                <tr><td>Flutter &amp; Dart</td><td>Mobile application development practice</td></tr>
+                                <tr><td>Data Analysis</td><td>Working with scientific datasets</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </section>
+
+            <!-- Education: each school entry can now be expanded or collapsed. -->
+            <section class="panel accordion-section" id="education" aria-labelledby="education-heading">
+                <h2 id="education-heading">Education</h2>
+                <details class="accordion-item">
+                    <summary>Universidad Autónoma de San Luis Potosí (UASLP)</summary>
+                    <div class="accordion-content">
+                        <p class="item-meta">Ingeniería en Sistemas Inteligentes</p>
+                        <p>
+                            Studies include intelligent systems, programming, and computational
+                            problem-solving. Academic projects have provided opportunities to apply
+                            technical skills to research and software development.
+                        </p>
+                    </div>
+                </details>
+                <details class="accordion-item">
+                    <summary>City University of Seattle</summary>
+                    <div class="accordion-content">
+                        <p class="item-meta">Bachelor of Science in Applied Computer Science</p>
+                        <p>
+                            Double degree program with UASLP, Mexico. 
+                        </p>
+                    </div>
+                </details>
+            </section>
+        </main>
+
+        <!-- Replaced placeholder links. -->
+        <footer>
+            <h2>Contact</h2>
+            <p class="contact-links">
+                <a href="mailto:gomezconstanza@cityuniversity.edu">Email</a>
+                <a href="https://www.linkedin.com/in/constanza-g%C3%B3mez-1a2a6b3b0/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/prosYcons" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </p>
+            <p class="copyright">&copy; 2026 Constanza Gómez Acebo</p>
+        </footer>
+
+        <script>
+            document.querySelectorAll(".accordion-section").forEach(section => {
+                // Toggle listener.
+                section.querySelectorAll("details.accordion-item").forEach(item => {
+                    item.addEventListener("toggle", () => {
+                        if (item.open) {
+                            section.querySelectorAll("details.accordion-item").forEach(other => {
+                                // Keep the clicked item open and close all its siblings.
+                                if (other !== item) other.open = false;
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,373 @@
+/* Colour palette:
+   Cream; sage green; dark green. */
+:root {
+    --page-bg: #f5f3e9;
+    --surface: #fffdf7;
+    --surface-soft: #edf1e5;
+    --green-dark: #244b3c;
+    --green: #52745b;
+    --green-light: #dce7d6;
+    --text: #26352d;
+    --muted: #66736a;
+    --border: #d6dfd1;
+    --shadow: 0 10px 28px rgba(36, 75, 60, 0.08);
+}
+
+/* Padding and borders. */
+* {
+    box-sizing: border-box;
+}
+
+/* Smooth scrolling. */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Base page */
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    background: var(--page-bg);
+    color: var(--text);
+}
+
+/* Header: dark-green background. */
+.site-header {
+    background: var(--green-dark);
+    color: #fffdf7;
+    padding: 34px 24px;
+}
+
+/* Keep the header content centered and align the photo beside the name on wide screens. */
+.header-inner {
+    width: min(100%, 980px);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+/* Profile photo */
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    flex: 0 0 150px;
+    overflow: hidden;
+    border: 4px solid var(--green-light);
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+}
+
+/* Crops the photo to fill the circle without stretching it. The same dimensions apply
+   to the initials fallback shown if the image cannot load. */
+.profile-photo img,
+.photo-fallback {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Centers the fallback initials inside the circle. */
+.photo-fallback {
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+/* Explicitly hides the fallback until the image fails to load. */
+.photo-fallback[hidden] {
+    display: none;
+}
+
+/* Allows the text block to shrink rather than overflow its flex container. */
+.header-copy {
+    min-width: 0;
+}
+
+/* Small uppercase label above the main heading. */
+.eyebrow {
+    margin: 0 0 5px;
+    color: #dce7d6;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 2.55rem);
+    line-height: 1.2;
+}
+
+/* Supports text under the name. */
+.subtitle {
+    margin: 9px 0 0;
+    font-size: 1.12rem;
+    color: #f0f2e9;
+}
+
+/* Short summary line beneath the academic title. */
+.intro-line {
+    margin: 3px 0 0;
+    color: #dce7d6;
+    font-size: 0.95rem;
+}
+
+/* Main content: caps the width for readability and centers it on the page. */
+main {
+    width: min(100% - 32px, 900px);
+    margin: 28px auto;
+    flex: 1;
+}
+
+/* Panel cards: shared styling keeps About, Experience, Skills, and Education consistent. */
+.panel {
+    margin-bottom: 20px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+/* Consistent heading color and spacing across content panels and footer. */
+.panel h2,
+footer h2 {
+    margin: 0 0 14px;
+    color: var(--green-dark);
+    font-size: 1.35rem;
+}
+
+/* Removes extra paragraph spacing in the About Me section. */
+.about-section p {
+    margin: 0;
+}
+
+/* Accordion items: each element looks like a bordered card. */
+.accordion-item {
+    margin: 10px 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--surface);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Gives an expanded accordion a stronger border and shadow. */
+.accordion-item[open] {
+    border-color: var(--green);
+    box-shadow: 0 5px 14px rgba(36, 75, 60, 0.08);
+}
+
+.accordion-item summary {
+    position: relative;
+    display: block;
+    padding: 14px 46px 14px 16px;
+    color: var(--green-dark);
+    background: var(--surface-soft);
+    cursor: pointer;
+    font-weight: 700;
+    list-style: none;
+}
+
+/* Hides the browser's default marker so my indicator can be used consistently. */
+.accordion-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Adds a plus sign using CSS instead of extra HTML. */
+.accordion-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 17px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--green-dark);
+    font-size: 1.35rem;
+    font-weight: 500;
+}
+
+/* Changes the plus to a minus when the details element is open. */
+.accordion-item[open] summary::after {
+    content: "−";
+}
+
+.accordion-item summary:focus-visible,
+a:focus-visible {
+    outline: 3px solid #b4cf9f;
+    outline-offset: 3px;
+}
+
+/* Spacing for the content revealed inside an expanded accordion. */
+.accordion-content {
+    padding: 4px 17px 17px;
+}
+
+/* Keeps paragraphs inside accordion panels evenly spaced. */
+.accordion-content p {
+    margin: 10px 0;
+}
+
+/* Highlights metadata such as project status or program name. */
+.item-meta {
+    color: var(--green);
+    font-weight: 700;
+}
+
+/* Makes small labels inside the project descriptions stand out. */
+.subheading {
+    margin-bottom: 4px !important;
+    font-weight: 700;
+}
+
+/* Indents lists so bullets are visually separated from the text above. */
+.accordion-content ul {
+    margin-top: 6px;
+    padding-left: 22px;
+}
+
+/* On narrow screens, allows the table to scroll horizontally instead of overflowing. */
+.table-wrap {
+    overflow-x: auto;
+}
+
+/* Skills table: collapse adjacent borders and use the full available panel width. */
+.skills-table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+    text-align: left;
+}
+
+/* Describes the table. */
+.skills-table caption {
+    padding: 8px 0 12px;
+    color: var(--muted);
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+/* Gives header and data cells consistent padding and visible borders. */
+.skills-table th,
+.skills-table td {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+}
+
+/* Dark header cells for column labels. */
+.skills-table th {
+    background: var(--green-dark);
+    color: #fffdf7;
+    font-weight: 700;
+}
+
+/* Alternate row colors fro each row. */
+.skills-table tbody tr:nth-child(even) {
+    background: var(--surface-soft);
+}
+
+/* Gives a row a highlight when the pointer moves over it. */
+.skills-table tbody tr:hover {
+    background: var(--green-light);
+}
+
+/* Footer: pale green surface that separates contact details from the main content. */
+footer {
+    margin-top: auto;
+    padding: 22px 16px;
+    background: #e8ede1;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+/* The footer heading is smaller than the main section headings. */
+footer h2 {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+/* Flexbox spaces out the contact links and lets them wrap on small screens. */
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    margin: 0 0 8px;
+}
+
+/* Uses the dark-green palette for readable, consistent links. */
+footer a {
+    color: var(--green-dark);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* Underlines links on hover so the interaction is easy to recognize. */
+footer a:hover {
+    text-decoration: underline;
+    color: #365f46;
+}
+
+/* Copyright text is intentionally muted so it does not compete with the links. */
+.copyright {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+/* Resposive design: on phones, stack the photo and text and reduce spacing/padding.
+   The table cells also use smaller padding to fit narrow screens more comfortably. */
+@media (max-width: 600px) {
+    .site-header {
+        padding: 25px 18px;
+    }
+
+    .header-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+        flex-basis: 120px;
+    }
+
+    .eyebrow {
+        font-size: 0.68rem;
+    }
+
+    main {
+        width: min(100% - 22px, 900px);
+        margin: 16px auto;
+    }
+
+    .panel {
+        padding: 18px;
+        border-radius: 11px;
+    }
+
+    .panel h2 {
+        font-size: 1.2rem;
+    }
+
+    .accordion-item summary {
+        padding: 13px 40px 13px 13px;
+    }
+
+    .skills-table th,
+    .skills-table td {
+        padding: 10px;
+        font-size: 0.92rem;
+    }
+}
